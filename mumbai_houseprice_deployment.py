@@ -10,8 +10,9 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import joblib
+
 model = joblib.load("mumbai_houseprice_prediction_xgb_model.pkl")
-encoder=joblib.load("mumbai houseprice prediction\label_encoder_houseprice.pkl")
+label_encoder = joblib.load("label_encoder_houseprice.pkl")
 st.title("mumbai house price prediction model")
 
 area = st.number_input("Enter area (sqft)", min_value=100, max_value=20000, value=500)
