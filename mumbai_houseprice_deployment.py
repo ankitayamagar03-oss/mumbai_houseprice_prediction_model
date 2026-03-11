@@ -34,28 +34,20 @@ furnished_encoded = label_encoder['furnished'].transform([furnished])[0]
 property_type_encoded = label_encoder['property_type'].transform([property_type])[0]
 locality_encoded = label_encoder['locality'].transform([locality])[0]
 
-# Prediction Button
 if st.button("Predict Price"):
 
-    try:
-        # Create input data in same order as model training
-        input_data = pd.DataFrame({
-            "area": [area],
-            "bedrooms": [bedroom_num],
-            "bathrooms": [bathroom_num],
-            "balconies": [balcony_num],
-            "age": [age],
-            "total_floors": [total_floors],
-            "furnished": [furnished_encoded],
-            "property_type": [property_type_encoded],
-            "locality": [locality_encoded]
-        })
+    input_data = pd.DataFrame([{
+        "area": area,
+        "bedroom_num": bedroom_num,
+        "bathroom_num": bathroom_num,
+        "balcony_num": balcony_num,
+        "age": age,
+        "total_floors": total_floors,
+        "furnished": furnished_encoded,
+        "property_type": property_type_encoded,
+        "locality": locality_encoded
+    }])
 
-        # Predict price
-        prediction = model.predict(input_data)
+    prediction = model.predict(input_data)
 
-        # Show result
-        st.success(f"Estimated House Price: ₹{prediction[0]:,.2f}")
-
-    except Exception as e:
-        st.error(f"Error in prediction: {e}")
+    st.success(f"Estimated House Price: ₹{prediction[0]:,.2f}")
