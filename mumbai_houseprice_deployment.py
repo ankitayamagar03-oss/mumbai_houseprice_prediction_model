@@ -48,6 +48,6 @@ if st.button("Predict Price"):
         "locality": [locality_encoded]
     })
 
-    prediction = model.predict(input_data)
+   prediction = model.predict(input_data.values)
 
     st.success("Estimated House Price: ₹" + str(prediction[0]))
