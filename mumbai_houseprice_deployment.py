@@ -35,17 +35,19 @@ property_type_encoded = label_encoder['property_type'].transform([property_type]
 locality_encoded = label_encoder['locality'].transform([locality])[0]
 
 if st.button("Predict Price"):
-df = pd.DataFrame({
-    "area": [area],
-    "bedrooms": [bedroom_num],
-    "bathrooms": [bathroom_num],
-    "balconies": [balcony_num],
-    "age": [age],
-    "total_floors": [total_floors],
-    "furnished": [furnished_encoded],
-    "property_type": [property_type_encoded],
-    "locality": [locality_encoded]
-})
 
-    predicted_price = model.predict(input_data) 
-    st.success(f"Estimated House Price: ₹{prediction[0]:,.2f}")
+    input_data = pd.DataFrame({
+        "area": [area],
+        "bedrooms": [bedroom_num],
+        "bathrooms": [bathroom_num],
+        "balconies": [balcony_num],
+        "age": [age],
+        "total_floors": [total_floors],
+        "furnished": [furnished_encoded],
+        "property_type": [property_type_encoded],
+        "locality": [locality_encoded]
+    })
+
+    prediction = model.predict(input_data)
+
+    st.success("Estimated House Price: ₹" + str(prediction[0]))
