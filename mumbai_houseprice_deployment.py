@@ -10,7 +10,7 @@ Original file is located at
 import streamlit as st
 import pandas as pd
 import joblib
-model=joblib.load("mumbai_houseprice_prediction_xgb_model.pkl")
+model = joblib.load("mumbai_houseprice_prediction_xgb_model.pkl")
 encoder=joblib.load("mumbai houseprice prediction\label_encoder_houseprice.pkl")
 st.title("mumbai house price prediction model")
 
