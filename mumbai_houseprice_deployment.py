@@ -46,5 +46,5 @@ df = pd.DataFrame({
     "locality": [locality_encoded]
 })
 if st.button("Predict Price"):
-    predicted_price = model.predict(input_data)
+    predicted_price = model.predict(df)
     st.success(f"Predicted House Price: ₹{predicted_price[0]:,.0f}")
