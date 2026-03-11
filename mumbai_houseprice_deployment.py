@@ -36,17 +36,27 @@ locality_encoded = label_encoder['locality'].transform([locality])[0]
 
 if st.button("Predict Price"):
 
-    input_data = pd.DataFrame([{
-        "area": area,
-        "bedroom_num": bedroom_num,
-        "bathroom_num": bathroom_num,
-        "balcony_num": balcony_num,
-        "age": age,
-        "total_floors": total_floors,
-        "furnished": furnished_encoded,
-        "property_type": property_type_encoded,
-        "locality": locality_encoded
-    }])
+    input_data = pd.DataFrame([[
+        area,
+        bedroom_num,
+        bathroom_num,
+        balcony_num,
+        age,
+        total_floors,
+        furnished_encoded,
+        property_type_encoded,
+        locality_encoded
+    ]], columns=[
+        "area",
+        "bedroom_num",
+        "bathroom_num",
+        "balcony_num",
+        "age",
+        "total_floors",
+        "furnished",
+        "property_type",
+        "locality"
+    ])
 
     prediction = model.predict(input_data)
 
