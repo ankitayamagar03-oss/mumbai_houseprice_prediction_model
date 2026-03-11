@@ -1,4 +1,6 @@
-﻿Numpy
-Pandas
-Scikit-learn
-Joblib
+streamlit
+scikit-learn
+xgboost
+pandas
+numpy
+joblib
